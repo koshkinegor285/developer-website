@@ -4,7 +4,7 @@
     {
       "name": "site-dist",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "8080", "--directory", "dist"],
+      "runtimeArgs": ["-m", "http.server", "8080", "--directory", "."],
       "port": 8080
     }
   ]

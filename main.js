@@ -16,22 +16,6 @@ if (banner) {
 
 document.querySelectorAll('[data-goal]').forEach((a) => a.addEventListener('click', () => goal(a.dataset.goal)));
 
-const form = document.getElementById('lead');
-if (form) form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const err = document.getElementById('err'), btn = form.querySelector('button');
-  const d = Object.fromEntries(new FormData(form));
-  if (d.website) return;
-  if (!d.name?.trim() || !d.contact?.trim()) { err.textContent = 'Укажите имя и Telegram или телефон.'; return; }
-  if (!form.consent.checked) { err.textContent = 'Нужно согласие на обработку данных.'; return; }
-  btn.disabled = true; const label = btn.textContent; btn.textContent = 'Открываем почту…';
-  goal('lead');
-  const body = `Имя: ${d.name}\r\nКонтакт: ${d.contact}\r\nЗадача: ${d.task || '-'}`;
-  location.href = `mailto:${window.MAIL}?subject=${encodeURIComponent('Сообщение с сайта')}&body=${encodeURIComponent(body)}`;
-  err.textContent = `Если почтовая программа не открылась, напишите на ${window.MAIL}.`;
-  setTimeout(() => { btn.disabled = false; btn.textContent = label; }, 2000);
-});
-
 /* динамика: появление и свечение под курсором */
 document.documentElement.classList.add('js');
 const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -75,22 +59,11 @@ if (mq && 'IntersectionObserver' in window) {
   new IntersectionObserver(([e]) => mq.classList.toggle('off', !e.isIntersecting)).observe(mq);
 }
 
-/* свет пробегает по кнопке формы, когда её долистали */
-const formBtn = document.querySelector('#form button[type=submit]');
-if (formBtn && !still && 'IntersectionObserver' in window) {
-  const sio = new IntersectionObserver(([e]) => {
-    if (!e.isIntersecting) return;
-    formBtn.classList.add('sweep');
-    sio.disconnect();
-  }, { threshold: 1 });
-  sio.observe(formBtn);
-}
-
 /* свет пробегает по плашке оффера при загрузке */
 const badge = document.querySelector('.badge');
 if (badge && !still) setTimeout(() => badge.classList.add('sweep'), 600);
 
-/* клик по услуге ведёт к форме контактов */
+/* клик по услуге ведёт к блоку контактов */
 document.querySelectorAll('#services .row').forEach((row) => {
   row.setAttribute('role', 'link');
   row.tabIndex = 0;
