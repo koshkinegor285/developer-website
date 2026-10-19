@@ -19,7 +19,7 @@ document.querySelectorAll('[data-goal]').forEach((a) => a.addEventListener('clic
 const form = document.getElementById('lead');
 if (form) form.addEventListener('submit', (e) => {
   e.preventDefault(); // заглушка: данные никуда не уходят
-  document.getElementById('err').textContent = 'Форма пока не работает. Напишите в Telegram или на почту: кнопки выше.';
+  document.getElementById('err').textContent = 'Форма пока не работает. Напишите в Telegram или на почту: контакты ниже.';
 });
 
 /* динамика: появление и свечение под курсором */
