@@ -16,6 +16,12 @@ if (banner) {
 
 document.querySelectorAll('[data-goal]').forEach((a) => a.addEventListener('click', () => goal(a.dataset.goal)));
 
+const form = document.getElementById('lead');
+if (form) form.addEventListener('submit', (e) => {
+  e.preventDefault(); // заглушка: данные никуда не уходят
+  document.getElementById('err').textContent = 'Форма пока не работает. Напишите в Telegram или на почту: кнопки выше.';
+});
+
 /* динамика: появление и свечение под курсором */
 document.documentElement.classList.add('js');
 const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -59,11 +65,22 @@ if (mq && 'IntersectionObserver' in window) {
   new IntersectionObserver(([e]) => mq.classList.toggle('off', !e.isIntersecting)).observe(mq);
 }
 
+/* свет пробегает по кнопке формы, когда её долистали */
+const formBtn = document.querySelector('#form button[type=submit]');
+if (formBtn && !still && 'IntersectionObserver' in window) {
+  const sio = new IntersectionObserver(([e]) => {
+    if (!e.isIntersecting) return;
+    formBtn.classList.add('sweep');
+    sio.disconnect();
+  }, { threshold: 1 });
+  sio.observe(formBtn);
+}
+
 /* свет пробегает по плашке оффера при загрузке */
 const badge = document.querySelector('.badge');
 if (badge && !still) setTimeout(() => badge.classList.add('sweep'), 600);
 
-/* клик по услуге ведёт к блоку контактов */
+/* клик по услуге ведёт к форме контактов */
 document.querySelectorAll('#services .row').forEach((row) => {
   row.setAttribute('role', 'link');
   row.tabIndex = 0;
