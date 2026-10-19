@@ -1,0 +1,5 @@
+# Конфиг с токеном не отдаётся по HTTP
+<FilesMatch "^(config(\.example)?\.php)$">
+  Require all denied
+</FilesMatch>
+Options -Indexes

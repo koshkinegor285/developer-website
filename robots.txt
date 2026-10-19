@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /thanks/
-Sitemap: https://koshkinegor285.github.io/developer-website/sitemap.xml
+Sitemap: https://egor-koshkin-dev.online/sitemap.xml

@@ -1,25 +1,39 @@
-const ok = () => { try { return localStorage.getItem('cookie-ok') === '1'; } catch { return false; } };
-
-function loadMetrika() {
-  const id = window.METRIKA_ID;
-  if (!id) return;
-  (function (m, e, t, r, i, k, a) { m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments); }; m[i].l = 1 * new Date(); k = e.createElement(t); a = e.getElementsByTagName(t)[0]; k.async = 1; k.src = r; a.parentNode.insertBefore(k, a); })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
-  ym(id, 'init', { clickmap: true, trackLinks: true, accurateTrackBounce: true });
-}
+// Метрика и баннер cookie живут в cookie.js; цели считаются, только если пользователь согласился
 const goal = (n) => { if (window.ym && window.METRIKA_ID) ym(window.METRIKA_ID, 'reachGoal', n); };
-
-const banner = document.getElementById('cookie');
-if (banner) {
-  if (ok()) loadMetrika(); else banner.hidden = false;
-  document.getElementById('cookie-ok').onclick = () => { try { localStorage.setItem('cookie-ok', '1'); } catch {} banner.hidden = true; loadMetrika(); };
-}
 
 document.querySelectorAll('[data-goal]').forEach((a) => a.addEventListener('click', () => goal(a.dataset.goal)));
 
 const form = document.getElementById('lead');
-if (form) form.addEventListener('submit', (e) => {
-  e.preventDefault(); // заглушка: данные никуда не уходят
-  document.getElementById('err').textContent = 'Форма пока не работает. Напишите в Telegram или на почту: контакты ниже.';
+if (form) form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const err = document.getElementById('err');
+  const btn = form.querySelector('button[type=submit]');
+  const fail = (msg) => { err.textContent = msg; };
+  const endpoint = window.FORM_ENDPOINT;
+  err.textContent = '';
+
+  if (!endpoint) return fail('Форма пока не подключена. Напишите в Telegram или на почту: контакты ниже.');
+
+  const data = Object.fromEntries(new FormData(form));
+  data.consent = form.elements.consent.checked;
+  data.page = location.href;
+  if (!data.name.trim()) { form.elements.name.focus(); return fail('Укажите имя.'); }
+  if (data.contact.trim().length < 3) { form.elements.contact.focus(); return fail('Укажите Telegram или телефон.'); }
+  if (!data.consent) { form.elements.consent.focus(); return fail('Нужно согласие на обработку данных.'); }
+
+  btn.disabled = true;
+  btn.textContent = 'Отправляем…';
+  try {
+    const res = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+    const json = await res.json().catch(() => ({}));
+    if (!res.ok || !json.ok) throw new Error(json.error || 'Не удалось отправить. Напишите в Telegram или на почту.');
+    goal('lead_submit');
+    location.href = './thanks/';
+  } catch (ex) {
+    fail(ex instanceof TypeError ? 'Нет связи с сервером. Напишите в Telegram или на почту.' : ex.message);
+    btn.disabled = false;
+    btn.textContent = btn.dataset.label;
+  }
 });
 
 /* динамика: появление и свечение под курсором */
