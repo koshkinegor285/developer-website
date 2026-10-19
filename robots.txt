@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /thanks/
+Sitemap: http://koshkinego.temp.swtest.ru/sitemap.xml

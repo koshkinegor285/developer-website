@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head><meta name="robots" content="noindex">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Демо: апарт-отель LOFT STAY — номера с мини-кухней (вымышленная организация)</title>
+  <meta name="description" content="Демонстрационная страница вымышленного апарт-отеля в стиле лофт: номера с мини-кухней, кондиционером и Wi-Fi, самостоятельное заселение. Организация не существует, услуги не оказываются.">
+  <meta name="theme-color" content="#0b2236">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Демо: апарт-отель LOFT STAY (вымышленная организация)">
+  <meta property="og:description" content="Демонстрационная страница. Организация вымышлена, услуги не оказываются.">
+  <meta property="og:image" content="assets/opt/hero.webp">
+  <!-- TODO: <link rel="canonical" href="https://[ДОМЕН]/"> — подставить после выбора домена -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/opt/hero.webp" fetchpriority="high">
+  <link rel="stylesheet" href="css/style.css">
+
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Hotel",
+    "name": "LOFT STAY (вымышленная организация)",
+    "description": "Демонстрационная страница вымышленного апарт-отеля в стиле лофт. Организация не существует, услуги не оказываются.",
+    "image": "assets/opt/hero.webp",
+    "telephone": "+7 999 000-00-00",
+    "email": "demo@example.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ул. Примерная, д. 1 (вымышленный)",
+      "addressLocality": "Москва",
+      "addressCountry": "RU"
+    },
+    "amenityFeature": [
+      {"@type": "LocationFeatureSpecification", "name": "Бесплатный Wi-Fi", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Кондиционер", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Мини-кухня", "value": true}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "Где находится апарт-отель?", "acceptedAnswer": {"@type": "Answer", "text": "LOFT STAY — вымышленный апарт-отель. Адрес в демо указан условно: Москва, ул. Примерная, д. 1."}},
+      {"@type": "Question", "name": "Есть ли кухня в номере?", "acceptedAnswer": {"@type": "Answer", "text": "Да, в номерах есть мини-кухня и ванная; состав оснащения зависит от номера."}},
+      {"@type": "Question", "name": "Есть ли Wi-Fi и кондиционер?", "acceptedAnswer": {"@type": "Answer", "text": "Да, Wi-Fi бесплатный, и в каждом номере есть кондиционер."}}
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<!-- SVG-спрайт иконок -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16 7l3 3M14 9l2 2"/></symbol>
+    <symbol id="i-kitchen" viewBox="0 0 24 24"><path d="M6 3v7M9 3v7M4 3v5a3 3 0 0 0 3 3 3 3 0 0 0 3-3V3M7.5 11v10M17 3c-1.7 1.7-2.5 3.8-2.5 6.5 0 1.7.8 2.5 2.5 2.5v9"/></symbol>
+    <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M11 3l1.8 4.7L17.5 9.5l-4.7 1.8L11 16l-1.8-4.7L4.5 9.5l4.7-1.8z"/><path d="M19 14l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></symbol>
+    <symbol id="i-bed" viewBox="0 0 24 24"><path d="M3 19V6M3 15h18v4M21 15v-3a3 3 0 0 0-3-3h-8v6"/><circle cx="6.5" cy="11" r="1.7"/></symbol>
+    <symbol id="i-snow" viewBox="0 0 24 24"><path d="M12 2v20M4.9 7l14.2 10M19.1 7L4.9 17M9.5 3.5L12 6l2.5-2.5M9.5 20.5L12 18l2.5 2.5"/></symbol>
+    <symbol id="i-tv" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#main">К содержимому</a>
+<div class="demo-bar" role="note"><b>Демонстрационная страница.</b> Организация, адрес, телефон, цены и условия вымышлены, апарт-отель не действует и услуг не оказывает. Фотографии иллюстративные.</div>
+
+<header class="header" id="header">
+  <div class="header__inner">
+    <a class="logo" href="#top" aria-label="LOFT STAY — на главную">LOFT<span>STAY</span></a>
+    <nav class="nav" aria-label="Основная навигация">
+      <a href="#rooms">Номера</a>
+      <a href="#checkin">Как заселиться</a>
+      <a href="#location">Как добраться</a>
+      <a href="#faq">Вопросы</a>
+    </nav>
+    <a class="header__tel" href="tel:+79990000000" data-goal="phone_click"><span>+7 (999) 000-00-00</span></a>
+    <a class="btn btn--primary btn--sm" href="#booking">Забронировать</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- 1. Первый экран -->
+  <section class="hero" id="top">
+    <picture>
+      <img class="hero__bg" src="assets/opt/hero.webp" alt="Номер в стиле лофт: две кровати, дерево и кирпич в стиле лофт" width="1138" height="640" fetchpriority="high">
+    </picture>
+    <div class="container hero__inner">
+      <p class="hero__place"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Москва · ул. Примерная, д. 1 <i>(вымышленный)</i></p>
+      <h1 class="hero__title">Апарт-отель в стиле лофт в Москве</h1>
+      <p class="hero__text">Номера с мини-кухней, кондиционером и Wi-Fi от 3&nbsp;500 ₽ за сутки. Заселяйтесь сами, без очереди на ресепшене.</p>
+
+      <form class="quick" id="quick-form" novalidate>
+        <label class="quick__field">Заезд
+          <input type="date" name="checkin" required>
+        </label>
+        <label class="quick__field">Выезд
+          <input type="date" name="checkout" required>
+        </label>
+        <label class="quick__field">Гости
+          <select name="adults">
+            <option value="1">1 взрослый</option>
+            <option value="2" selected>2 взрослых</option>
+          </select>
+        </label>
+        <button class="btn btn--primary quick__submit" type="submit">Узнать цену на мои даты</button>
+      </form>
+      <p class="quick__hint">Ответим за 15 минут. Без предоплаты на этом шаге.</p>
+
+      <div class="hero__actions">
+        <a class="btn btn--outline-light" href="#booking">Забронировать</a>
+        <a class="hero__call" href="tel:+79990000000" data-goal="phone_click"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>или позвонить <span>+7 (999) 000-00-00</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Факты -->
+  <section class="facts" aria-label="Коротко об отеле">
+    <ul class="container facts__list">
+      <li><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg><div><b>Рядом с метро</b>несколько минут пешком</div></li>
+      <li><svg class="ic" aria-hidden="true"><use href="#i-key"/></svg><div><b>Самостоятельное</b>заселение без очереди</div></li>
+      <li><svg class="ic" aria-hidden="true"><use href="#i-kitchen"/></svg><div><b>Мини-кухня</b>и ванная в номере</div></li>
+      <li><svg class="ic" aria-hidden="true"><use href="#i-wifi"/></svg><div><b>Бесплатный</b>Wi-Fi</div></li>
+    </ul>
+  </section>
+
+  <!-- 3. Номера и цены -->
+  <section class="section rooms" id="rooms">
+    <div class="container">
+      <h2 class="h2">Выберите номер: цена и что входит</h2>
+      <p class="section__lead">Пять номеров в стиле лофт. Цена указана за сутки на двоих, все удобства из списка уже включены. Доплата только за ранний заезд и поздний выезд — 500 ₽ в час, если номер свободен.</p>
+
+      <div class="rooms__grid">
+        <article class="card" data-room="Лофт 1">
+          <img class="card__img" src="assets/opt/room-1.webp" alt="Номер Лофт 1" width="800" height="600" loading="lazy">
+          <div class="card__body">
+            <h3 class="card__title">Лофт 1</h3>
+            <p class="card__price">от 3&nbsp;500 ₽ <small>/ сутки</small></p>
+            <ul class="chips"><li>Кондиционер</li><li>Wi-Fi</li><li>ЖК-телевизор</li><li>До 2 гостей</li></ul>
+            <div class="card__actions">
+              <button class="btn btn--primary btn--sm" type="button" data-book>Забронировать</button>
+              <button class="btn btn--ghost btn--sm" type="button" data-more aria-expanded="false">Подробнее</button>
+            </div>
+            <p class="card__more" hidden>Уютный номер с двуспальной кроватью и деревянным изголовьем. У окна — рабочий стол со стулом, рядом туалетный столик с зеркалом с подсветкой. Кондиционер, ЖК-телевизор, чайник, Wi-Fi, собственная ванная.</p>
+          </div>
+        </article>
+
+        <article class="card" data-room="Лофт 2">
+          <img class="card__img" src="assets/opt/room-2.webp" alt="Номер Лофт 2" width="800" height="425" loading="lazy">
+          <div class="card__body">
+            <h3 class="card__title">Лофт 2</h3>
+            <p class="card__price">от 3&nbsp;900 ₽ <small>/ сутки</small></p>
+            <ul class="chips"><li>Кондиционер</li><li>Wi-Fi</li><li>ЖК-телевизор</li><li>До 2 гостей</li></ul>
+            <div class="card__actions">
+              <button class="btn btn--primary btn--sm" type="button" data-book>Забронировать</button>
+              <button class="btn btn--ghost btn--sm" type="button" data-more aria-expanded="false">Подробнее</button>
+            </div>
+            <p class="card__more" hidden>Просторный номер с двумя односпальными кроватями — подойдёт друзьям, коллегам или семье, которым нужны раздельные места. Кирпичная стена в стиле лофт, ЖК-телевизор, чайник, туалетный столик с зеркалом, кондиционер, Wi-Fi, собственная ванная.</p>
+          </div>
+        </article>
+
+        <article class="card" data-room="Лофт 3">
+          <img class="card__img" src="assets/opt/room-3.webp" alt="Номер Лофт 3" width="800" height="450" loading="lazy">
+          <div class="card__body">
+            <h3 class="card__title">Лофт 3</h3>
+            <p class="card__price">от 4&nbsp;200 ₽ <small>/ сутки</small></p>
+            <ul class="chips"><li>Кондиционер</li><li>Wi-Fi</li><li>ЖК-телевизор</li><li>До 2 гостей</li></ul>
+            <div class="card__actions">
+              <button class="btn btn--primary btn--sm" type="button" data-book>Забронировать</button>
+              <button class="btn btn--ghost btn--sm" type="button" data-more aria-expanded="false">Подробнее</button>
+            </div>
+            <p class="card__more" hidden>Компактный номер с двуспальной кроватью, кирпичной кладкой и большим окном. Рабочий стол, туалетный столик с зеркалом, тумба с чайником, кондиционер, ЖК-телевизор, Wi-Fi, собственная ванная.</p>
+          </div>
+        </article>
+
+        <article class="card" data-room="Лофт 4 Улучшенный">
+          <img class="card__img" src="assets/opt/room-4.webp" alt="Номер Лофт 4 Улучшенный" width="800" height="450" loading="lazy">
+          <div class="card__body">
+            <h3 class="card__title">Лофт 4 Улучшенный</h3>
+            <p class="card__price">от 4&nbsp;800 ₽ <small>/ сутки</small></p>
+            <ul class="chips"><li>Кондиционер</li><li>Wi-Fi</li><li>ЖК-телевизор</li><li>До 2 гостей</li></ul>
+            <div class="card__actions">
+              <button class="btn btn--primary btn--sm" type="button" data-book>Забронировать</button>
+              <button class="btn btn--ghost btn--sm" type="button" data-more aria-expanded="false">Подробнее</button>
+            </div>
+            <p class="card__more" hidden>Просторный номер с двуспальной кроватью, вместительный шкаф, кирпичная стена и большое окно с плотными шторами. Туалетный столик с зеркалом, ЖК-телевизор, кондиционер, Wi-Fi, собственная ванная.</p>
+          </div>
+        </article>
+
+        <article class="card" data-room="Лофт 5 с мини кухней">
+          <img class="card__img" src="assets/opt/room-5.webp" alt="Номер Лофт 5 с мини кухней" width="800" height="450" loading="lazy">
+          <div class="card__body">
+            <h3 class="card__title">Лофт 5 с мини кухней</h3>
+            <p class="card__price">от 5&nbsp;400 ₽ <small>/ сутки</small></p>
+            <ul class="chips"><li>Мини кухня</li><li>Кондиционер</li><li>Wi-Fi</li><li>ЖК-телевизор</li></ul>
+            <div class="card__actions">
+              <button class="btn btn--primary btn--sm" type="button" data-book>Забронировать</button>
+              <button class="btn btn--ghost btn--sm" type="button" data-more aria-expanded="true">Подробнее</button>
+            </div>
+            <p class="card__more">Мини кухня, одна двуспальная или две односпальные кровати, кондиционер, вытяжка, раковина, индукционная плита, сковородка, кастрюля, посуда, санузел, ЖК телевизор, Wi-Fi, холодильник, чайник, часы-будильник, шкаф.</p>
+          </div>
+        </article>
+      </div>
+
+      <aside class="rooms__cta">
+        <div>
+          <h3 class="card__title">Не нашли свои даты?</h3>
+          <p>Назовите даты и количество гостей — подскажем свободный номер и точную цену.</p>
+        </div>
+        <a class="btn btn--primary" href="#top" data-focus-quick>Узнать цену на мои даты</a>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 4. В каждом номере -->
+  <section class="section amenities" id="amenities">
+    <div class="container amenities__layout">
+      <div>
+        <h2 class="h2">Всё для комфортных суток уже в номере</h2>
+        <ul class="amenities__list">
+          <li><span class="amenity-ic"><svg class="ic" aria-hidden="true"><use href="#i-kitchen"/></svg></span>Мини-кухня и ванная комната</li>
+          <li><span class="amenity-ic"><svg class="ic" aria-hidden="true"><use href="#i-sparkle"/></svg></span>Комплект косметических принадлежностей</li>
+          <li><span class="amenity-ic"><svg class="ic" aria-hidden="true"><use href="#i-bed"/></svg></span>Комфортная кровать</li>
+          <li><span class="amenity-ic"><svg class="ic" aria-hidden="true"><use href="#i-snow"/></svg></span>Кондиционер</li>
+          <li><span class="amenity-ic"><svg class="ic" aria-hidden="true"><use href="#i-wifi"/></svg></span>Бесплатный Wi-Fi</li>
+          <li><span class="amenity-ic"><svg class="ic" aria-hidden="true"><use href="#i-tv"/></svg></span>ЖК-телевизор</li>
+        </ul>
+        <a class="btn btn--primary" href="#top" data-focus-quick>Узнать цену на мои даты</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Как заселиться -->
+  <section class="section checkin" id="checkin">
+    <div class="container">
+      <h2 class="h2">Заселение за 3 шага без очереди</h2>
+      <ol class="steps">
+        <li><span class="steps__n">1</span><h3>Бронируете</h3><p>Оставляете заявку, мы подтверждаем номер и даты в течение 15 минут.</p></li>
+        <li><span class="steps__n">2</span><h3>Получаете инструкцию</h3><p>За день до заезда присылаем код от двери и пошаговую инструкцию в мессенджер или по SMS.</p></li>
+        <li><span class="steps__n">3</span><h3>Заселяетесь сами</h3><p>Заезд с 14:00, выезд до 12:00. Вводите код, проходите в номер — без ожидания и очереди.</p></li>
+      </ol>
+      <a class="btn btn--primary" href="#booking">Забронировать</a>
+    </div>
+  </section>
+
+  <!-- 6. Как добраться -->
+  <section class="section location" id="location">
+    <div class="container location__layout">
+      <div>
+        <h2 class="h2">Как добраться</h2>
+        <address class="location__addr">Москва, ул. Примерная, д. 1 <i>(вымышленный)</i></address>
+        <p>Телефон для связи по приезду: <a href="tel:+79990000000" data-goal="phone_click"><span>+7 (999) 000-00-00</span></a></p>
+        <div class="location__actions">
+          <a class="btn btn--ghost" href="tel:+79990000000" data-goal="phone_click">Позвонить</a>
+        </div>
+      </div>
+      <div class="location__map">
+        <div class="location__stub">Карта в демонстрационной версии не показывается: адрес вымышлен, такого апарт-отеля не существует.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Отзывы: скрыт до получения реальных отзывов.
+       Нужно: 3–5 отзывов с именем, датой и ссылкой на источник; рейтинг и число отзывов на Яндекс.Картах.
+  <section class="section reviews" id="reviews" hidden>…</section>
+  -->
+
+  <!-- 8. Условия -->
+  <section class="section terms" id="terms">
+    <div class="container">
+      <h2 class="h2">Условия бронирования без сюрпризов</h2>
+      <dl class="terms__grid">
+        <div><dt>Заезд / выезд</dt><dd>С 14:00 / до 12:00</dd></div>
+        <div><dt>Оплата и предоплата</dt><dd>Предоплата — стоимость первых суток после подтверждения, остаток — до заезда</dd></div>
+        <div><dt>Отмена и перенос</dt><dd>Бесплатно за 24 часа до заезда, позже — удерживаем стоимость первых суток</dd></div>
+        <div><dt>Документы</dt><dd>Паспорт каждого гостя: фото отправляете заранее, при заселении ничего показывать не нужно</dd></div>
+        <div><dt>Оплачивается отдельно</dt><dd>Скрытых платежей нет. Только ранний заезд и поздний выезд — 500 ₽ в час, если номер свободен</dd></div>
+      </dl>
+      <a class="btn btn--primary" href="#top" data-focus-quick>Узнать цену на мои даты</a>
+    </div>
+  </section>
+
+  <!-- 9. FAQ -->
+  <section class="section faq" id="faq">
+    <div class="container container--narrow">
+      <h2 class="h2">Частые вопросы перед бронью</h2>
+      <details class="qa"><summary>Где находится апарт-отель?</summary><p>Нигде: LOFT STAY — вымышленная организация. Адрес в демо указан условно: Москва, ул. Примерная, д. 1.</p></details>
+      <details class="qa"><summary>Как далеко до метро?</summary><p>В демо расстояние условное: несколько минут пешком.</p></details>
+      <details class="qa"><summary>Есть ли кухня в номере?</summary><p>Да, в номерах есть мини-кухня и ванная. Состав оснащения зависит от номера, подробности — в карточке номера.</p></details>
+      <details class="qa"><summary>Есть ли Wi-Fi и кондиционер?</summary><p>Да, Wi-Fi бесплатный, и в каждом номере есть кондиционер.</p></details>
+      <details class="qa"><summary>Как проходит заселение?</summary><p>Заселение самостоятельное: за день до заезда мы присылаем код от двери и пошаговую инструкцию в мессенджер или по SMS.</p></details>
+      <details class="qa"><summary>Во сколько заезд и выезд?</summary><p>Заезд с 14:00, выезд до 12:00. Ранний заезд и поздний выезд — 500 ₽ в час, если номер свободен.</p></details>
+      <details class="qa"><summary>Можно ли отменить бронь?</summary><p>Бесплатно — не позднее чем за 24 часа до заезда. Позже удерживаем стоимость первых суток.</p></details>
+      <details class="qa"><summary>Нужны ли документы?</summary><p>Да, нужен паспорт каждого гостя. Фото страницы с фотографией отправляете заранее — при заселении ничего показывать не нужно.</p></details>
+      <p class="faq__more">Остались вопросы? <a class="btn btn--ghost btn--sm" href="tel:+79990000000" data-goal="phone_click">Позвонить</a> </p>
+    </div>
+  </section>
+
+  <!-- 10. Финальная форма -->
+  <section class="section booking" id="booking">
+    <div class="container booking__layout">
+      <div class="booking__intro">
+        <h2 class="h2">Забронируйте номер на свои даты</h2>
+        <p>Оставьте даты и телефон — подтвердим наличие и точную цену в течение 15 минут.</p>
+        <img src="assets/opt/booking.webp" alt="Номер в стиле лофт: кирпич, дерево и тёплый свет" width="800" height="450" loading="lazy">
+      </div>
+
+      <form class="form" id="booking-form" novalidate>
+        <div class="form__row">
+          <label class="fld">Заезд
+            <input type="date" name="checkin" required aria-describedby="err-checkin">
+            <span class="fld__err" id="err-checkin" role="alert"></span>
+          </label>
+          <label class="fld">Выезд
+            <input type="date" name="checkout" required aria-describedby="err-checkout">
+            <span class="fld__err" id="err-checkout" role="alert"></span>
+          </label>
+        </div>
+        <div class="form__row">
+          <label class="fld">Взрослые
+            <select name="adults">
+              <option value="1">1 взрослый</option>
+              <option value="2" selected>2 взрослых</option>
+            </select>
+          </label>
+          <label class="fld">Дети
+            <select name="children">
+              <option value="0" selected>Без детей</option>
+              <option value="1">1 ребёнок</option>
+              <option value="2">2 ребёнка</option>
+              <option value="3">3 ребёнка</option>
+            </select>
+          </label>
+        </div>
+        <label class="fld">Номер
+          <select name="room">
+            <option value="">Любой подходящий</option>
+            <option>Лофт 1</option>
+            <option>Лофт 2</option>
+            <option>Лофт 3</option>
+            <option>Лофт 4 Улучшенный</option>
+            <option>Лофт 5 с мини кухней</option>
+          </select>
+        </label>
+        <label class="fld">Телефон
+          <input type="tel" name="phone" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" required aria-describedby="err-phone">
+          <span class="fld__err" id="err-phone" role="alert"></span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" name="consent" required aria-describedby="err-consent">
+          <span>Я даю согласие на обработку персональных данных в соответствии с <a href="privacy.html" target="_blank" rel="noopener">политикой конфиденциальности</a></span>
+        </label>
+        <span class="fld__err" id="err-consent" role="alert"></span>
+
+        <button class="btn btn--primary btn--lg" type="submit" id="booking-submit">Забронировать</button>
+        <p class="form__status" id="form-status" role="status" hidden></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- 11. Контакты и подвал -->
+<footer class="footer" id="contacts">
+  <div class="container footer__grid">
+    <div>
+      <a class="logo logo--light" href="#top">LOFT<span>STAY</span></a>
+      <p class="footer__note">Апарт-отель в стиле лофт в Москве (демо)</p>
+    </div>
+    <address class="footer__list">
+      <h3>Контакты</h3>
+      <a href="tel:+79990000000" data-goal="phone_click"><span>+7 (999) 000-00-00</span></a>
+      <a href="tel:+79990000000" data-goal="phone_click"><span>+7 (999) 000-00-00</span> — забронировать</a>
+      <span>demo@example.com</span>
+      <span>Москва, ул. Примерная, д. 1 <i>(вымышленный)</i></span>
+      <span>Часы работы: ежедневно, круглосуточно</span>
+    </address>
+    <div class="footer__list">
+      <h3>Мессенджеры</h3>
+      Мессенджеры в демо не подключены
+      <h3>Документы</h3>
+      <a href="privacy.html">Политика конфиденциальности</a>
+      
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <p class="footer__demo">Демонстрационный сайт. Организация «LOFT STAY», адрес, телефон, цены, условия бронирования и отзывы вымышлены и не существуют. Апарт-отель не действует и услуг не оказывает; бронирование недоступно, введённые данные не передаются и не сохраняются. Фотографии иллюстративные и не относятся к реальному объекту. Это не оферта и не реклама услуг.</p>
+    <p class="footer__legal">ООО «Лофт Стэй» (вымышленное), ИНН 0000000000, ОГРН 0000000000000, Москва, ул. Примерная, д. 1 · <a href="privacy.html">Политика конфиденциальности</a></p>
+  </div>
+</footer>
+
+<!-- Мобильная панель -->
+<div class="dock" aria-label="Быстрая связь">
+  <a class="btn btn--ghost" href="tel:+79990000000" data-goal="phone_click"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>Позвонить</a>
+  <a class="btn btn--primary" href="#booking">Забронировать</a>
+</div>
+
+
+<script src="js/main.js"></script>
+</body>
+</html>
